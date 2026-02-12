@@ -90,8 +90,13 @@
             var btn = document.getElementById('get-started-btn');
             if (btn) {
                 btn.addEventListener('click', function(e) {
-                    ChurnZero.push(['open']);
-                    console.log('click');
+                    e.preventDefault();
+                    if (typeof ChurnZero !== 'undefined') {
+                        ChurnZero.push(['open']);
+                        console.log('ChurnZero opened');
+                    } else {
+                        console.error('ChurnZero not loaded');
+                    }
                 });
             }
         });
