@@ -33,14 +33,6 @@
             nav a{margin-left:.6rem}
         }
     </style>
-    <script>
-        var ChurnZero = ChurnZero || [];
-        (function(a,b,c,d){var cz=a.createElement(b); cz.type=c; cz.async=true; cz.src=d;var s=a.getElementsByTagName(b)[0];s.parentNode.insertBefore(cz, s);})(document, "script",'text/javascript', 'https://firstclose-dev.us2app.churnzero.net/churnzero.js');
-
-        ChurnZero.push(['setAppKey', '__CZ_APPLICATION_KEY__']);
-        console.log('connecting to churnzero');
-        ChurnZero.push(['setContact', '__CZ_ACCOUNT_ID__', '__CZ_USER_ID__']);
-    </script>
 </head>
 <body>
     <div class="container">
@@ -82,7 +74,15 @@
             © <span id="year"></span> MySite — All rights reserved.
         </footer>
     </div>
+    <script>
+        var ChurnZero = ChurnZero || [];
+        (function(a,b,c,d){var cz=a.createElement(b); cz.type=c; cz.async=true; cz.src=d;var s=a.getElementsByTagName(b)[0];s.parentNode.insertBefore(cz, s);})(document, "script",'text/javascript', 'https://firstclose-dev.us2app.churnzero.net/churnzero.js');
 
+        ChurnZero.push(['setAppKey', '__CZ_APPLICATION_KEY__']);
+        console.log('connecting to churnzero');
+        ChurnZero.push(['setContact', '__CZ_ACCOUNT_ID__', '__CZ_USER_ID__']);
+        console.log(ChurnZero)
+    </script>
     <script>
         // small script to set the current year and add click handler
         document.getElementById('year').textContent = new Date().getFullYear();
