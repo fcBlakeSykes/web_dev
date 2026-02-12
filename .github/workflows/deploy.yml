@@ -1,0 +1,38 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Inject secrets into HTML
+        run: |
+          sed -i "s|__CZ_APPLICATION_KEY__|${{ secrets.CZ_APPLICATION_KEY }}|g" index.html
+          sed -i "s|__CZ_ACCOUNT_ID__|${{ secrets.CZ_ACCOUNT_ID }}|g" index.html
+          sed -i "s|__CZ_USER_ID__|${{ secrets.CZ_USER_ID }}|g" index.html
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

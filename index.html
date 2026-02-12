@@ -37,9 +37,9 @@
         var ChurnZero = ChurnZero || [];
         (function(a,b,c,d){var cz=a.createElement(b); cz.type=c; cz.async=true; cz.src=d;var s=a.getElementsByTagName(b)[0];s.parentNode.insertBefore(cz, s);})(document, "script",'text/javascript', 'https://firstclose-dev.us2app.churnzero.net/churnzero.js');
 
-        ChurnZero.push(['setAppKey', '1!A16r4zzuuWA9yWrD2K0ZgIlHmol3eWTGnB9BRIFixCst1623']);
+        ChurnZero.push(['setAppKey', '__CZ_APPLICATION_KEY__']);
         console.log('connecting to churnzero');
-        ChurnZero.push(['setContact', '0010B00001l21bwQAA', 'a.alli@easternbank.com']);
+        ChurnZero.push(['setContact', '__CZ_ACCOUNT_ID__', '__CZ_USER_ID__']);
     </script>
 </head>
 <body>
